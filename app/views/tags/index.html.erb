@@ -1,0 +1,79 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Titulos</h1>
+
+<br><br><br>
+
+<table>
+  <thead>
+    <tr>
+      <th>Titulo</th>
+      <th>Tendency</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tags.each do |tag| %>
+      <tr>
+        <td><%= tag.titulo %></td>
+        <td><%= tag.tendency_id %></td>
+        <td><%= link_to 'Show', tag %></td>
+        <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
+        <td><%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to 'Agregar Titulo', new_tag_path(@tendency_id) %>
+
+
+
+
+
+
+<nav class="w3-sidenav w3-card-2 w3-animate-right nav-menu" style="display: none;right:0; width:250px; z-index:5" id="mySidenav">
+      </br>
+        <a href="javascript:void(0)" onclick="w3_close()"
+        class="w3-closenav w3-large">Cerrar &times;</a>
+      </br>
+        <a class="w3-large" href="index.html"><i class="material-icons icon-nav">home</i> Inicio</a>
+        <a class="w3-large" href="urbanizacion.html">Urbanización acelerada</a>
+        <a class="w3-large" href="demograficos.html">Cambios demográficos</a>
+        <a class="w3-large" href="tecnologicos.html">Avances tecnológicos</a>
+        <a class="w3-large" href="climaticos.html">Cambios climáticos</a>
+        <a class="w3-large" href="economicos.html">Cambios económicos</a>
+      </nav>
+      <div class="w3-overlay w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+    <header class="bgecon">
+      <span class="w3-opennav w3-xlarge w3-right nav-bt" onclick="w3_open()">&#9776;</span>
+      <div class="divtitle">
+        <h2 class="title">Cambios en el poder económico y mundial</h2>
+      </div>
+      <div id="randomButton" role="button">Dame una idea de negocio</div>
+    </header>
+    <main>
+
+      <div class="row">
+        <div class="container col-4">
+            <p class="tag">Tendencia</p>
+            <p id="svgtag" class="btn centered">Explora las tendencias con un click</p>
+          <div id="wheelEconT" class="wheelDiv"></div>
+        </div>
+
+        <div class="container col-4">
+          <p class="tag">Problemática</p>
+          <p id="svgtag2" class="btn centered">Explora las problemáticas con un click</p>
+          <div id="wheelEconP" class="wheelDiv"></div>
+        </div>
+
+        <div class="container col-4">
+          <p class="tag">Bienestar</p>
+          <p id="svgtag3" class="btn centered">Explora los bienestares con un click</p>
+          <div id="wheelDiv3" class="wheelDiv"></div>
+        </div>
+      </div>
+      </div>
+    </main>
