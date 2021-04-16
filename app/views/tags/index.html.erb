@@ -1,79 +1,126 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Titulos</h1>
+<h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Temas</h2>
 
 <br><br><br>
 
-<table>
-  <thead>
-    <tr>
-      <th>Titulo</th>
-      <th>Tendency</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @tags.each do |tag| %>
-      <tr>
-        <td><%= tag.titulo %></td>
-        <td><%= tag.tendency_id %></td>
-        <td><%= link_to 'Show', tag %></td>
-        <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
-        <td><%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
 <br>
-<%= link_to 'Agregar Titulo', new_tag_path(@tendency_id) %>
 
+<p id="notice"><%= notice %></p>
+<!-- Masthead-->
+        <header class="masthead bg-primary text-white text-center">
+            <div class="container d-flex align-items-center flex-column">
+                <!-- Masthead Avatar Image-->
+                <img class="masthead-avatar mb-5" src="assets/images/avataars.svg" alt="" />
+                <!-- Masthead Heading-->
+                <h1 class="masthead-heading text-uppercase mb-0">EDC Generador De Ideas</h1>
+                <!-- Icon Divider-->
+                <div class="divider-custom divider-light">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <!-- Masthead Subheading-->
+                <p class="masthead-subheading font-weight-light mb-0">Graphic Artist - Web Designer - Illustrator</p>
+            </div>
+        </header>
+<h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Temas</h2>
 
+<div class="container">
+<%= link_to 'Agregar Titulo', new_tag_path, class: "btn btn-success" %>
+<br><br>
+<div class="row row-cols-2 row-cols-lg-5 g-3 g-lg-3 justify-content-center">
+<% @tags.each do |tag| %>
+    <div class="col-md-6 col-lg-4 mb-5">
+      <div class="contenedor">
+          <h1><%= tag.titulo %></h1>
+        <div class="concursantes">
+            <canvas id="<%= tag.titulo %>" width="350" height="350">
 
-
-
-
-<nav class="w3-sidenav w3-card-2 w3-animate-right nav-menu" style="display: none;right:0; width:250px; z-index:5" id="mySidenav">
-      </br>
-        <a href="javascript:void(0)" onclick="w3_close()"
-        class="w3-closenav w3-large">Cerrar &times;</a>
-      </br>
-        <a class="w3-large" href="index.html"><i class="material-icons icon-nav">home</i> Inicio</a>
-        <a class="w3-large" href="urbanizacion.html">Urbanización acelerada</a>
-        <a class="w3-large" href="demograficos.html">Cambios demográficos</a>
-        <a class="w3-large" href="tecnologicos.html">Avances tecnológicos</a>
-        <a class="w3-large" href="climaticos.html">Cambios climáticos</a>
-        <a class="w3-large" href="economicos.html">Cambios económicos</a>
-      </nav>
-      <div class="w3-overlay w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
-    <header class="bgecon">
-      <span class="w3-opennav w3-xlarge w3-right nav-bt" onclick="w3_open()">&#9776;</span>
-      <div class="divtitle">
-        <h2 class="title">Cambios en el poder económico y mundial</h2>
-      </div>
-      <div id="randomButton" role="button">Dame una idea de negocio</div>
-    </header>
-    <main>
-
-      <div class="row">
-        <div class="container col-4">
-            <p class="tag">Tendencia</p>
-            <p id="svgtag" class="btn centered">Explora las tendencias con un click</p>
-          <div id="wheelEconT" class="wheelDiv"></div>
+            </canvas>
+            <br>
+            <%= link_to 'Nuevo Contenido', new_topic_path, class: "btn btn-success"  %>
+            <%= link_to 'Editar', edit_tag_path(tag), class: "btn btn-warning"  %>
+					<%= link_to 'Eliminar', tag, method: :delete, data: { confirm: '¿Seguro que quieres eliminar este Titulo y todo su contenido?' },class: "btn btn-danger" %>
         </div>
-
-        <div class="container col-4">
-          <p class="tag">Problemática</p>
-          <p id="svgtag2" class="btn centered">Explora las problemáticas con un click</p>
-          <div id="wheelEconP" class="wheelDiv"></div>
-        </div>
-
-        <div class="container col-4">
-          <p class="tag">Bienestar</p>
-          <p id="svgtag3" class="btn centered">Explora los bienestares con un click</p>
-          <div id="wheelDiv3" class="wheelDiv"></div>
-        </div>
+        
       </div>
-      </div>
-    </main>
+  	</div>
+    
+  	
+    
+
+    <script>
+    
+    var nombres = [];
+    <% @topics.each do |tendencia2| %>
+    nombres.push('<%= tendencia2.nombre  %>');
+    <% end %>
+    myfunction(nombres);
+  function myfunction(my_var){
+    
+    let canvas=document.getElementById('<%= tag.titulo %>');
+    
+    let context=canvas.getContext("2d");
+    let center=canvas.width/2;
+
+    context.beginPath();
+    context.moveTo(center,center);
+    context.arc(center,center,center,0, 2*Math.PI);
+    context.lineTo(center,center);
+    context.fillStyle ='#33333333';
+    context.fill();
+
+    context.beginPath();
+    context.moveTo(center,center);
+    context.arc(center,center,center-10,0, 2*Math.PI);
+    context.lineTo(center,center);
+    context.fillStyle ='black';
+    context.fill();
+
+    for (var i = 0; i < my_var.length; i++) {
+      context.beginPath();
+      context.moveTo(center,center);
+      context.arc(center,center,center-20,i*2*Math.PI/my_var.length, (i+1)*2*Math.PI/my_var.length);
+      context.lineTo(center,center);
+      context.fillStyle =random_color();
+      context.fill();
+
+      context.save();
+      context.translate(center, center);
+      context.rotate(3*2*Math.PI/(5*my_var.length)+i*2*Math.PI/my_var.length);
+      context.translate(-center, -center);
+      context.font = "13px Comic Sans MS";
+      context.textAlign = "right";
+      context.fillStyle = "white";
+      context.fillText(my_var[i], canvas.width-30, center);
+      context.restore();
+    }
+
+    let pos_ini=0;
+    let clic=0;
+    let movement;
+    
+    }
+
+function random_color(){
+  let ar_digit=['1','2','3','4','5','6','7','8','9'];
+  let color='';
+  let i=0;
+  while(i<6){
+    let pos=Math.round(Math.random()*(ar_digit.length-1));
+    color=color+''+ar_digit[pos];
+    i++;
+  }
+  return '#'+color;
+}
+
+  </script>
+  	<% end %>
+  
+  
+	</div>
+</div>
+
+

@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-
+<br><br>
   <div class="field">
     <%= form.label :nombre %>
     <%= form.text_field :nombre %>
@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= form.label :tag_id %>
-    <%= form.text_field :tag_id %>
+    <%= form.select :tag_id, Tag.all.collect { |p| [ p.titulo, p.id ] }, include_blank: true, class: "form-control" %>
   </div>
 
   <div class="actions">

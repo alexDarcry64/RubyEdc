@@ -19,7 +19,7 @@
 <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Tendencias</h2>
 
 <div class="container">
-<%= link_to 'New Tendency', new_tendency_path, class: "btn btn-success" %>
+<%= link_to 'Agregar Tendencia', new_tendency_path, class: "btn btn-success" %>
 <br><br>
 <div class="row row-cols-2 row-cols-lg-5 g-3 g-lg-3 justify-content-center">
 <% @tendencies.each do |tendency| %>
@@ -47,83 +47,5 @@
 	<% end %>
   
   
-  	
-    <div class="col-md-6 col-lg-4 mb-5">
-      <div class="contenedor">
-          <h1>Concursantes</h1>
-        <div class="concursantes">
-            <canvas id="idcanvas" width="350" height="350">
-
-            </canvas>
-            <br>
-        </div>
-      </div>
-  	</div>
-
-    <script>
-    
-    var nombres = [];
-    <% @tendencies.each do |tendency| %>
-    nombres.push('<%= tendency.nombre %>');
-    <% end %>
-    myfunction(nombres)
-    
-  function myfunction(my_var){
-    let canvas=document.getElementById("idcanvas");
-    let context=canvas.getContext("2d");
-    let center=canvas.width/2;
-
-    context.beginPath();
-    context.moveTo(center,center);
-    context.arc(center,center,center,0, 2*Math.PI);
-    context.lineTo(center,center);
-    context.fillStyle ='#33333333';
-    context.fill();
-
-    context.beginPath();
-    context.moveTo(center,center);
-    context.arc(center,center,center-10,0, 2*Math.PI);
-    context.lineTo(center,center);
-    context.fillStyle ='black';
-    context.fill();
-
-    for (var i = 0; i < my_var.length; i++) {
-      context.beginPath();
-      context.moveTo(center,center);
-      context.arc(center,center,center-20,i*2*Math.PI/my_var.length, (i+1)*2*Math.PI/my_var.length);
-      context.lineTo(center,center);
-      context.fillStyle =random_color();
-      context.fill();
-
-      context.save();
-      context.translate(center, center);
-      context.rotate(3*2*Math.PI/(5*my_var.length)+i*2*Math.PI/my_var.length);
-      context.translate(-center, -center);
-      context.font = "13px Comic Sans MS";
-      context.textAlign = "right";
-      context.fillStyle = "white";
-      context.fillText(my_var[i], canvas.width-30, center);
-      context.restore();
-    }
-
-    let pos_ini=0;
-    let clic=0;
-    let movement;
-    }
-
-function random_color(){
-  let ar_digit=['1','2','3','4','5','6','7','8','9'];
-  let color='';
-  let i=0;
-  while(i<6){
-    let pos=Math.round(Math.random()*(ar_digit.length-1));
-    color=color+''+ar_digit[pos];
-    i++;
-  }
-  return '#'+color;
-}
-
-  </script>
-  	
 	</div>
 </div>
