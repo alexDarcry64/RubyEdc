@@ -10,18 +10,34 @@
       </ul>
     </div>
   <% end %>
-<br><br>
-  <div class="field">
-    <%= form.label :nombre %>
-    <%= form.text_field :nombre %>
-  </div>
+<br><br><br>
 
-  <div class="field">
-    <%= form.label :tag_id %>
-    <%= form.select :tag_id, Tag.all.collect { |p| [ p.titulo, p.id ] }, include_blank: true, class: "form-control" %>
-  </div>
+<div class="container">
+<div class="justify-content-center">
+			<div class="card border-primary" style="width: 40rem; height: 27rem;">
+			<div class="card-header">
+				<h5 class="card-title">Agregar Topico</h5>
+			</div>
+				
+				<div class="card-body">
+          <div class="form-label">
+              <%= form.label :nombre %>
+              <%= form.text_field :nombre, class: "form-control" %>
+            </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+            <div class="form-label">
+              <%= form.label :tag_id %>
+              <%= form.select :tag_id, Tag.all.collect { |p| [ p.titulo, p.id ] }, include_blank: true, class: "form-control" %>
+            </div>
+           
+				</div>
+	
+				<div class="card-footer bg-transparent border-primary">
+					  <div class="actions">
+            <%= form.submit "Aceptar",class: "form-control btn btn-success" %>
+              
+            </div>
+				</div>
+	</div>
+	</div>
 <% end %>

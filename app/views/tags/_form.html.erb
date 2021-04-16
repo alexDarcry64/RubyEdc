@@ -11,17 +11,33 @@
     </div>
   <% end %>
 <br><br><br>
-  <div class="field">
-    <%= form.label :titulo %>
-    <%= form.text_field :titulo %>
-  </div>
 
-  <div class="field">
-    <%= form.label :tendency_id %>
-    <%= form.select :tendency_id, Tendency.all.collect { |p| [ p.nombre, p.id ] }, include_blank: true, class: "form-control" %>
-  </div>
+  <div class="container">
+<div class="justify-content-center">
+			<div class="card border-primary" style="width: 40rem; height: 27rem;">
+			<div class="card-header">
+				<h5 class="card-title">Agregar Categoria</h5>
+			</div>
+				
+				<div class="card-body">
+          <div class="form-label">
+              <%= form.label :titulo %>
+              <%= form.text_field :titulo, class: "form-control" %>
+            </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+            <div class="form-label">
+              <%= form.label :tendency_id %>
+              <%= form.select :tendency_id, Tendency.all.collect { |p| [ p.nombre, p.id ] }, include_blank: true, class: "form-control" %>
+            </div>
+           
+				</div>
+	
+				<div class="card-footer bg-transparent border-primary">
+					  <div class="actions">
+            <%= form.submit "Aceptar",class: "form-control btn btn-success" %>
+              
+            </div>
+				</div>
+	</div>
+	</div>
 <% end %>

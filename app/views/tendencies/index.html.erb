@@ -19,7 +19,9 @@
 <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Tendencias</h2>
 
 <div class="container">
+<% if user_signed_in? %>
 <%= link_to 'Agregar Tendencia', new_tendency_path, class: "btn btn-success" %>
+<% end %>
 <br><br>
 <div class="row row-cols-2 row-cols-lg-5 g-3 g-lg-3 justify-content-center">
 <% @tendencies.each do |tendency| %>
@@ -38,9 +40,11 @@
 				</div>
 
 				<div class="card-footer bg-transparent border-primary">
+				<% if user_signed_in? %>
 					<%= link_to 'Editar', edit_tendency_path(tendency), class: "btn btn-warning"  %>
 					<%= link_to 'Eliminar', tendency, method: :delete, data: { confirm: '¿Seguro que quieres eliminar esta tendencia?' },
 					class: "btn btn-danger" %>
+				<% end %>
 				</div>
 			</div>
 	</div>

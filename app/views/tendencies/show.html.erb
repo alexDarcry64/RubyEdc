@@ -1,4 +1,5 @@
 <p id="notice"><%= notice %></p>
+<br><br><br>
 
 <p>
   <strong>Nombre:</strong>
@@ -15,5 +16,5 @@
   <%= link_to @tendency.cover_photo.filename,rails_blob_path(@tendency.cover_photo, disposition: "attachment") %>
 </p>
 
-<%= link_to 'Edit', edit_tendency_path(@tendency) %> |
-<%= link_to 'Back', tendencies_path %>
+<%= link_to 'Editar', edit_tendency_path(@tendency), class: "btn btn-warning" %> |
+<%= link_to 'Regresar', tendencies_path, class: "btn btn-secondary"  %>
