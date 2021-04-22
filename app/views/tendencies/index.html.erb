@@ -33,7 +33,7 @@
 
 
 				<div class="card-body">
-				<%= link_to tags_path(tendency.nombre) do %>
+				<%= link_to tags_path(:tendencia => tendency.id) do %>
 				<%= image_tag url_for(tendency.cover_photo), class: "container" %>
 				<% end %>
 				<p class="card-text"><%= tendency.descripcion %></p>

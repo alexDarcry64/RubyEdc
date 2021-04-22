@@ -1,11 +1,18 @@
 class TagsController < ApplicationController
   before_action :set_tag, only: %i[ show edit update destroy ]
+def filtrar
+  
+  raise @tags.to_yalm
+  raise @topics.to_yalm
+end
 
   # GET /tags or /tags.json
   def index
-    @tags = Tag.all
-    @tendencies = Tendency.all
-    @topics = Topic.all
+    @tags = Tag.where("tags.tendency_id = ?",params[:tendencia])
+    @titulo = @tags
+    @tags.each do |tag|
+    @topics = Topic.where("topics.tag_id = ?",tag)
+    end
   end
 
   # GET /tags/1 or /tags/1.json
