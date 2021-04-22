@@ -29,7 +29,7 @@
 
 <div class="container">
 <% if user_signed_in? %>
-<%= link_to 'Agregar Titulo', new_tag_path, class: "btn btn-success" %>
+<%= link_to 'Agregar Titulo', new_tag_path(:tendencia => params[:tendencia]), class: "btn btn-success" %>
 <% end %>
 <br><br>
 <div class="row row-cols-2 row-cols-lg-5 g-3 g-lg-3 justify-content-center">
@@ -43,7 +43,7 @@
             </canvas>
             <br>
             <% if user_signed_in? %>
-            <%= link_to 'Nuevo Contenido', new_topic_path, class: "btn btn-success"  %>
+            <%= link_to 'Nuevo Contenido', new_topic_path(:tendencia => params[:tendencia]), class: "btn btn-success"  %>
             <%= link_to 'Editar', edit_tag_path(tag), class: "btn btn-warning"  %>
 					<%= link_to 'Eliminar', tag, method: :delete, data: { confirm: '¿Seguro que quieres eliminar este Titulo y todo su contenido?' },class: "btn btn-danger" %>
           <% end %>

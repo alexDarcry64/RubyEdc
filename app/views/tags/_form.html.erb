@@ -27,7 +27,7 @@
 
             <div class="form-label">
               <%= form.label :tendency_id %>
-              <%= form.select :tendency_id, Tendency.all.collect { |p| [ p.nombre, p.id ] }, include_blank: true, class: "form-control" %>
+              <%= form.select :tendency_id, Tendency.all.collect { |p| [ p.nombre, p.id ] }, class: "form-control" %>
             </div>
            
 				</div>

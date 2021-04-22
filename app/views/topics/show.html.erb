@@ -11,4 +11,4 @@
 </p>
 
 <%= link_to 'Editar', edit_topic_path(@topic), class: "btn btn-warning" %> |
-<%= link_to 'Regresar', tags_path, class: "btn btn-secondary" %>
+<%= link_to 'Regresar', tags_path(:tendencia => params[:tendencia]), class: "btn btn-secondary" %>
